@@ -1,0 +1,3 @@
+[submodule "epoch-sample-app"]
+	path = epoch-sample-app
+	url = https://github.com/shiota-2021/epoch-sample-app.git
