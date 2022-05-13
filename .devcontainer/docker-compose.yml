@@ -1,0 +1,38 @@
+version: '3.1'
+services:
+  ui-app:
+    build:
+      dockerfile: ./ui-app/Dockerfile
+      context: ../epoch-sample-app
+      args:
+        - HTTP_PROXY=${HTTP_PROXY}
+        - HTTPS_PROXY=${HTTPS_PROXY}
+    ports:
+      - "0.0.0.0:32001:8000"
+  api-app:
+    build:
+      dockerfile: ./api_app/Dockerfile
+      context: ../epoch-sample-app
+      args:
+        - HTTP_PROXY=${HTTP_PROXY}
+        - http_proxy=${HTTP_PROXY}
+        - HTTPS_PROXY=${HTTPS_PROXY}
+        - https_proxy=${HTTPS_PROXY}
+        - NODE_TLS_REJECT_UNAUTHORIZED=0
+    ports:
+      - "0.0.0.0:32002:8000"
+    volumes:
+      - ../epoch-sample-app/api_app:/app:cached
+      - ..:/workspace:cached
+    environment:
+      - LANG=en_US.UTF-8
+      - HTTP_PROXY=${HTTP_PROXY}
+      - http_proxy=${HTTP_PROXY}
+      - HTTPS_PROXY=${HTTPS_PROXY}
+      - https_proxy=${HTTPS_PROXY}
+      - NO_PROXY=localhost,127.0.0.1
+      - no_proxy=localhost,127.0.0.1
+      - SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+      - SSL_CERT_DIR=/etc/ssl/certs
+      - FLASK_ENV=development
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
