@@ -23,12 +23,18 @@
             "name": "Python: Flask",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/epoch-sample-app/api_app/goods.py",
+            "program": "/app/goods.py",
             "env": {
-                "FLASK_APP": "${workspaceFolder}/epoch-sample-app/api_app/goods.py",
+                "FLASK_APP": "/app/goods.py",
                 "FLASK_ENV": "development"
             },
-            "cwd": "${workspaceFolder}/epoch-sample-app/api_app",
+            "cwd": "/app",
+            "pathMappings": [
+              {
+                "localRoot": "${workspaceFolder}/epoch-sample-app/api_app",
+                "remoteRoot": "/app"
+              }
+            ],
             "args": [
                 "run",
                 "--no-debugger"

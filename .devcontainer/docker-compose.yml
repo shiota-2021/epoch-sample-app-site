@@ -18,12 +18,16 @@ services:
         - http_proxy=${HTTP_PROXY}
         - HTTPS_PROXY=${HTTPS_PROXY}
         - https_proxy=${HTTPS_PROXY}
-        - NODE_TLS_REJECT_UNAUTHORIZED=0
+        - SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+        - SSL_CERT_DIR=/etc/ssl/certs
     ports:
       - "0.0.0.0:32002:8000"
     volumes:
       - ../epoch-sample-app/api_app:/app:cached
       - ..:/workspace:cached
+      - /root/.netrc:/root/.netrc
+      - /root/.gitconfig:/root/.gitconfig
+      - /usr/share/pki/ca-trust-source/anchors/ZscalerRootCertificate.cer:/etc/ssl/certs/ca-certificates.crt
     environment:
       - LANG=en_US.UTF-8
       - HTTP_PROXY=${HTTP_PROXY}
@@ -35,4 +39,4 @@ services:
       - SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
       - SSL_CERT_DIR=/etc/ssl/certs
       - FLASK_ENV=development
-      - NODE_TLS_REJECT_UNAUTHORIZED=0
+      - NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt

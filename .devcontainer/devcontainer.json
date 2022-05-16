@@ -5,7 +5,8 @@
 	"dockerComposeFile": ["docker-compose.yml"],
 	"service": "api-app",
 	// "build": {
-	// 	"dockerfile": "Dockerfile",
+	// 	"dockerfile": "../epoch-sample-app/api_app/Dockerfile",
+	// 	"context": "../epoch-sample-app",
 	// 	"args": {
 	// 		// Update 'VARIANT' to pick a Debian OS version: bullseye, buster
 	// 		// Use bullseye when on local arm64/Apple Silicon.
@@ -13,6 +14,9 @@
 	// 		// Enable Node.js: pick the latest LTS version
 	// 		"NODE_VERSION": "lts/*",
 	// 		"HTTP_PROXY": "${localEnv:HTTP_PROXY}",
+	// 		"HTTPS_PROXY": "${localEnv:HTTPS_PROXY}",
+	// 		"http_proxy": "${localEnv:HTTP_PROXY}",
+	// 		"https_proxy": "${localEnv:HTTPS_PROXY}",
 	// 	}
 	// },
 	// Set *default* container specific settings.json values on container create.
@@ -47,12 +51,12 @@
 	// "postCreateCommand": "jekyll serve --force_polling",
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "root"
-	//"workspaceMount": "source=${localWorkspaceFolder},target=/app-test,type=bind",
-	"mounts": [
-		"source=/root/.netrc,target=/root/.netrc,type=bind",
-		"source=/root/.gitconfig,target=/root/.gitconfig,type=bind",
-		"source=/usr/share/pki/ca-trust-source/anchors/ZscalerRootCertificate.cer,target=/etc/ssl/certs/ca-certificates.crt,type=bind",
-	],
+	// "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+	// "mounts": [
+	// 	"source=/root/.netrc,target=/root/.netrc,type=bind",
+	// 	"source=/root/.gitconfig,target=/root/.gitconfig,type=bind",
+	// 	"source=/usr/share/pki/ca-trust-source/anchors/ZscalerRootCertificate.cer,target=/etc/ssl/certs/ca-certificates.crt,type=bind",
+	// ],
 	"workspaceFolder": "/workspace",
 	// "containerEnv": {
 	// 	// "JEKYLL_GID": "1000",
@@ -67,6 +71,7 @@
 	// 	"no_proxy": "localhost,127.0.0.1",
 	// 	"SSL_CERT_FILE": "/etc/ssl/certs/ca-certificates.crt",
 	// 	"SSL_CERT_DIR": "/etc/ssl/certs",
+	// 	"NODE_EXTRA_CA_CERTS": "/etc/ssl/certs/ca-certificates.crt"
 	// },
 	"overrideCommand": true
 }
