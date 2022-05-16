@@ -46,8 +46,18 @@
 	],
 	// Use 'postCreateCommand' to run commands after the container is created.
 	//"onCreateCommand": "bash /tmp/install_talisman.bash",
-	"onCreateCommand": "apt-get update && apt-get -y install git && pip install debugpy",
-	"postAttachCommand": "cd /app; while true; do  python3 -m debugpy --listen 5678 /app/goods.py; sleep 5; done",
+
+	//
+	// Flask Serverを自動起動するパターン
+	//
+	// "onCreateCommand": "apt-get update && apt-get -y install git && pip install debugpy",
+	// "postAttachCommand": "cd /app; while true; do  python3 -m debugpy --listen 5678 /app/goods.py; sleep 5; done",
+
+	//
+	// Flask Serverを自動起動しないパターン
+	//
+	"onCreateCommand": "apt-get update && apt-get -y install git",
+
 	// "postCreateCommand": "jekyll serve --force_polling",
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "root"
