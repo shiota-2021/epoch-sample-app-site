@@ -1,6 +1,8 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.231.6/containers/jekyll
 {
+	//TEST
+	
 	"name": "epoch-sample-app-site",
 	"dockerComposeFile": ["docker-compose.yml"],
 	"service": "api-app",
