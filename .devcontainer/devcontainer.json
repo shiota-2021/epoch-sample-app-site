@@ -4,7 +4,8 @@
 	//TEST
 	
 	"name": "epoch-sample-app-site",
-	"dockerComposeFile": ["docker-compose.yml"],
+	"dockerComposeFile": ["docker-compose.yml","docker-compose.dev.yml","docker-compose-common-auth.yml"],
+	//"dockerComposeFile": ["docker-compose.yml"],
 	"service": "api-app",
 	// "build": {
 	// 	"dockerfile": "../epoch-sample-app/api_app/Dockerfile",

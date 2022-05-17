@@ -10,33 +10,34 @@ services:
     ports:
       - "0.0.0.0:32001:8000"
   api-app:
-    build:
-      dockerfile: ./api_app/Dockerfile
-      context: ../epoch-sample-app
-      args:
-        - HTTP_PROXY=${HTTP_PROXY}
-        - http_proxy=${HTTP_PROXY}
-        - HTTPS_PROXY=${HTTPS_PROXY}
-        - https_proxy=${HTTPS_PROXY}
-        - SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
-        - SSL_CERT_DIR=/etc/ssl/certs
+    image: shiota2021/epoch-sample-api:master.20220509-102715
+    # build:
+    #   dockerfile: ./api_app/Dockerfile
+    #   context: ../epoch-sample-app
+    #   args:
+    #     - HTTP_PROXY=${HTTP_PROXY}
+    #     - http_proxy=${HTTP_PROXY}
+    #     - HTTPS_PROXY=${HTTPS_PROXY}
+    #     - https_proxy=${HTTPS_PROXY}
+    #     - SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+    #     - SSL_CERT_DIR=/etc/ssl/certs
     ports:
       - "0.0.0.0:32002:8000"
-    volumes:
-      - ../epoch-sample-app/api_app:/app:cached
-      - ..:/workspace:cached
-      - /root/.netrc:/root/.netrc
-      - /root/.gitconfig:/root/.gitconfig
-      - /usr/share/pki/ca-trust-source/anchors/ZscalerRootCertificate.cer:/etc/ssl/certs/ca-certificates.crt
-    environment:
-      - LANG=en_US.UTF-8
-      - HTTP_PROXY=${HTTP_PROXY}
-      - http_proxy=${HTTP_PROXY}
-      - HTTPS_PROXY=${HTTPS_PROXY}
-      - https_proxy=${HTTPS_PROXY}
-      - NO_PROXY=localhost,127.0.0.1
-      - no_proxy=localhost,127.0.0.1
-      - SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
-      - SSL_CERT_DIR=/etc/ssl/certs
-      - FLASK_ENV=development
-      - NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+    # volumes:
+    #   - ../epoch-sample-app/api_app:/app:cached
+    #   - ..:/workspace:cached
+    #   - /root/.netrc:/root/.netrc
+    #   - /root/.gitconfig:/root/.gitconfig
+    #   - /usr/share/pki/ca-trust-source/anchors/ZscalerRootCertificate.cer:/etc/ssl/certs/ca-certificates.crt
+    # environment:
+    #   - LANG=en_US.UTF-8
+    #   - HTTP_PROXY=${HTTP_PROXY}
+    #   - http_proxy=${HTTP_PROXY}
+    #   - HTTPS_PROXY=${HTTPS_PROXY}
+    #   - https_proxy=${HTTPS_PROXY}
+    #   - NO_PROXY=${DOTENV_NO_PROXY}
+    #   - no_proxy=${DOTENV_NO_PROXY}
+    #   - SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+    #   - SSL_CERT_DIR=/etc/ssl/certs
+    #   - FLASK_ENV=development
+    #   - NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt

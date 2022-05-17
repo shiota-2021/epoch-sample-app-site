@@ -1,0 +1,9 @@
+version: '3.1'
+services:
+  keycloak:
+    image:  jboss/keycloak:15.0.2
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=password
+    ports:
+      - "0.0.0.0:8101:8080"
